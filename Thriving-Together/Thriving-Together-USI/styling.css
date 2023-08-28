@@ -72,9 +72,12 @@ p {
     color: #FFF;
     opacity: 0;
     transition: 0.3s;
+    z-index: -1;
+    position: relative;
 }
 
 .active {
+    z-index: 2;
     opacity: 1;
 }
 
