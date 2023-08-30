@@ -16,24 +16,31 @@ const active4 = document.querySelector('#tile-4-active');
 
 
 open1.addEventListener('click', function (event) {
-    console.log("clicked");
+    active2.classList.remove("active");
+    active3.classList.remove("active");
+    active4.classList.remove("active");
     active1.classList.add("active");
 })
 
-function openTile1() {
-    console.log("clicked");
-    active1.classList.add("active");
-}
-
 open2.addEventListener('click', function (event) {
+    active1.classList.remove("active");
+    active3.classList.remove("active");
+    active4.classList.remove("active");
     active2.classList.add("active");
 })
 
 open3.addEventListener('click', function (event) {
+    active2.classList.remove("active");
+    active1.classList.remove("active");
+    active4.classList.remove("active");
     active3.classList.add("active");
 })
 
 open4.addEventListener('click', function (event) {
+    
+    active2.classList.remove("active");
+    active3.classList.remove("active");
+    active1.classList.remove("active");
     active4.classList.add("active");
 })
 
