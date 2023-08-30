@@ -139,8 +139,6 @@ p {
     position: relative;
     max-width: 400px;
     padding:20px;
-    display: flex;
-    flex-direction: column;
 }
 
 .tile>img {
