@@ -407,6 +407,9 @@ p {
     .grid {grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     }
+    .tile {
+        min-height: 700px;
+    }
 
     .header>p {
         max-width: 100%;
@@ -462,6 +465,9 @@ p {
 
 @media screen and (max-width: 800px) {
     .grid {grid-template-columns: repeat(2, 1fr);}
+    .tile {
+        min-height: 750px;
+    }
 
     #tile-1 {
         grid-column: 1;
@@ -511,6 +517,7 @@ p {
 
     .tile {
         width: 100%;
+        min-height: 600px;
     }
 
     #tile-1 {
