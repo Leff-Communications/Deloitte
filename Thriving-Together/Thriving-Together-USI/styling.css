@@ -1,6 +1,7 @@
 body {
     font-family: AtlasGrotesk,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 h1 {
@@ -61,23 +62,26 @@ p {
     position: relative;
     display: grid;
     max-width: 90%;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     padding: 20px;
 }
 
 
-.moreInfo {
+.hover {
     color: #FFF;
     opacity: 0;
     transition: 0.3s;
-    z-index: -1;
-    position: relative;
 }
 
-.active {
-    z-index: 2;
+.hover:hover {
     opacity: 1;
+}
+
+#tile-1, #tile-2, #tile-3, #tile-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #tile-1 {
@@ -86,36 +90,38 @@ p {
     border-color: #012169;
 }
 
-#tile-1-active {
+#tile-1-hover {
     grid-column: 1;
     grid-row: 1;
     background-color: #012169;
     border-color: #012169;
-    align-items: flex-start;
 }
-#tile-2-active {
+#tile-2-hover {
     grid-column: 2;
     grid-row: 1;
     background-color: #0076a8;
     border-color: #0076a8;
-    align-items: flex-start;
 }
 
-#tile-3-active {
+#tile-3-hover {
     grid-column: 3;
     grid-row: 1;
     background-color: #00a3e0;
     border-color: #00a3e0;
-    align-items: flex-start;
 }
-#tile-4-active {
+#tile-4-hover {
     grid-column: 4;
     grid-row: 1;
     background-color: #006c3b;
     border-color: #006c3b;
-    align-items: flex-start;
 }
 
+#tile-5-hover {
+    grid-column: 5;
+    grid-row: 1;
+    background-color: #73bf43;
+    border-color: #73bf43;
+}
 
 #tile-2 {
     grid-column: 2;
@@ -135,21 +141,26 @@ p {
     border-color: #006c3b;
 }
 
+#tile-5 {
+    grid-column: 5;
+    grid-row: 1;
+    border-color: #73bf43;
+}
+
 .tile {
     border: 3px solid;
     background-color: #FFF;
     border-radius: 15px;
     padding: 20px;
+    min-height: 400px;
     position: relative;
-    max-width: 400px;
+    width: auto;
+    max-width: 250px;
     padding:20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .tile>img {
-    max-width: 250px;
+    max-width: 100px;
     object-fit: contain;
 }
 
@@ -178,9 +189,8 @@ p {
     background-color: #ffffff00;
     min-width: 25px;
     min-height: 25px;
-    bottom: 25px;
-    right: 50%;
-    transform: translate(50%, 50%);
+    top: 35px;
+    right: 35px;
 }
 
 .close-symbol1 {
@@ -306,7 +316,7 @@ p {
 #modal-1>div {
     border-color: #012169;
     
-    background: #012169;
+    background: #fff;
 }
 
 #modal-2>div {
@@ -316,12 +326,16 @@ p {
 
 #modal-3>div {
     border-color: #00a3e0;
-    background: #00a3e0;
+    background: #fff;
 }
 
 #modal-4>div {
     border-color: #006c3b;
-    background: #006c3b;
+    background: #fff;
+}
+#modal-5>div {
+    border-color: #73bf43;
+    background: #fff;
 }
 
 #modal-1>div>.modal-text {
@@ -338,6 +352,10 @@ p {
 
 #modal-4>div>.modal-text {
     background-color: #006c3b;
+}
+
+#modal-5>div>.modal-text {
+    background-color: #73bf43;
 }
 
 
@@ -360,6 +378,7 @@ p {
 }
 .modal-text {
     min-width: 400px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     color: #FFF;
@@ -403,12 +422,9 @@ p {
     }
 }
 
-@media screen and (max-width: 1350px) {
-    .grid {grid-template-columns: repeat(3, 1fr);
+@media screen and (max-width: 1000px) {
+    .grid {grid-template-columns: repeat(3, minmax(0, 1fr));
     justify-items: center;
-    }
-    .tile {
-        min-height: 700px;
     }
 
     .header>p {
@@ -420,25 +436,25 @@ p {
         grid-row: 1;
     }
     
-    #tile-1-active {
+    #tile-1-hover {
         grid-column: 1;
         grid-row: 1;
     }
-    #tile-2-active {
+    #tile-2-hover {
         grid-column: 2;
         grid-row: 1;
     }
     
-    #tile-3-active {
+    #tile-3-hover {
         grid-column: 3;
         grid-row: 1;
     }
-    #tile-4-active {
+    #tile-4-hover {
         grid-column: 1;
         grid-row: 2;
     }
     
-    #tile-5-active {
+    #tile-5-hover {
         grid-column: 2;
         grid-row: 2;
     }
@@ -455,6 +471,11 @@ p {
     
     #tile-4 {
         grid-column: 1;
+        grid-row: 2;
+    }
+    
+    #tile-5 {
+        grid-column: 2;
         grid-row: 2;
     }
 
@@ -464,9 +485,10 @@ p {
 }
 
 @media screen and (max-width: 800px) {
-    .grid {grid-template-columns: repeat(2, 1fr);}
+    .grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+
     .tile {
-        min-height: 750px;
+        max-width: 225px;
     }
 
     #tile-1 {
@@ -474,22 +496,27 @@ p {
         grid-row: 1;
     }
     
-    #tile-1-active {
+    #tile-1-hover {
         grid-column: 1;
         grid-row: 1;
     }
-    #tile-2-active {
+    #tile-2-hover {
         grid-column: 2;
         grid-row: 1;
     }
     
-    #tile-3-active {
+    #tile-3-hover {
         grid-column: 1;
         grid-row: 2;
     }
-    #tile-4-active {
+    #tile-4-hover {
         grid-column: 2;
         grid-row: 2;
+    }
+    
+    #tile-5-hover {
+        grid-column: 1;
+        grid-row: 3;
     }
     
     #tile-2 {
@@ -506,41 +533,50 @@ p {
         grid-column: 2;
         grid-row: 2;
     }
+    
+    #tile-5 {
+        grid-column: 1;
+        grid-row: 3;
+    }
 
     body {
         overflow-y: auto;
+    }
+
+    .modal>div {
+        min-height: 600px;
     }
 }
 
-@media screen and (max-width: 650px) {
-    .grid {grid-template-columns: repeat(1, 1fr);}
-
-    .tile {
-        width: 100%;
-        min-height: 600px;
-    }
+@media screen and (max-width: 600px) {
+    .grid {grid-template-columns: repeat(1, minmax(0, 1fr));}
 
     #tile-1 {
         grid-column: 1;
         grid-row: 1;
     }
     
-    #tile-1-active {
+    #tile-1-hover {
         grid-column: 1;
         grid-row: 1;
     }
-    #tile-2-active {
+    #tile-2-hover {
         grid-column: 1;
         grid-row: 2;
     }
     
-    #tile-3-active {
+    #tile-3-hover {
         grid-column: 1;
         grid-row: 3;
     }
-    #tile-4-active {
+    #tile-4-hover {
         grid-column: 1;
         grid-row: 4;
+    }
+    
+    #tile-5-hover {
+        grid-column: 1;
+        grid-row: 5;
     }
     
     #tile-2 {
@@ -557,8 +593,44 @@ p {
         grid-column: 1;
         grid-row: 4;
     }
+    
+    #tile-5 {
+        grid-column: 1;
+        grid-row: 5;
+    }
 
     body {
         overflow-y: auto;
+    }
+    .modal-text {
+        min-width: 100px;
+        display: flex;
+        flex-direction: column;
+        color: #FFF;
+        padding: 3em 2em;
+    }
+
+    .modal-text>p>a {
+        line-break: anywhere !important;
+        overflow-wrap: break-word !important;
+    }
+
+
+    .modal-img {
+        max-width: 100px;
+        margin: auto;
+    }
+    .close-button {
+        top: 20px;
+        right: 10px;
+    }
+
+    dialog {
+        width: 100%;
+        height: 100%;
+    }
+    .modal>div {
+        height: 100%;
+        justify-content: space-between;
     }
 }
